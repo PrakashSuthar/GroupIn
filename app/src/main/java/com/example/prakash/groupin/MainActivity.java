@@ -15,7 +15,7 @@ import java.net.*;
 public class MainActivity extends AppCompatActivity {
 
 
-    static EditText username, password;
+    EditText username, password;
     Button login_btn;
 
 
@@ -43,9 +43,9 @@ public class MainActivity extends AppCompatActivity {
             }
         }
     };
-    final static String POST_PARAMS = "name";
+    final String POST_PARAMS = "name";
 
-    private static void sendPOST() throws IOException {
+    private void sendPOST() throws IOException {
 
 
         String requestURL = "http://groupin.unaux.com/UserCheck.php";
@@ -77,43 +77,23 @@ public class MainActivity extends AppCompatActivity {
             for (String line : response) {
                 System.out.println(line);
             }
+            //Call Home Fragment
+            callActivity();
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
+
         HttpUtility.disconnect();
     }
-
+        private void callActivity(){
+            Intent intent=new Intent(this,Notify.class);
+            startActivity(intent);
+        }
 
 }
 
 
-
-
-
-        //InetAddress A=InetAddress.getByName("www.google.com");
-        //username.setText(A.toString());
-        /*
-        URL url = new URL("https://www.google.com/");
-        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-        urlConnection.setDoOutput(true);//Enable Data sending to website
-        urlConnection.setRequestProperty("email","prakashps26@gmail.com");
-        urlConnection.setRequestProperty("name","C2K12345678");
-        urlConnection.setRequestProperty("password","123456");
-        OutputStream os=urlConnection.getOutputStream();
-        OutputStreamWriter ow=new OutputStreamWriter(os);
-        try {
-            InputStream in = new BufferedInputStream(urlConnection.getInputStream());
-            String s="";
-            int i;
-            while((i=in.read())!=-1)
-            {
-                s+=(char)i;
-            }
-            username.setText(s);
-        } finally {
-            urlConnection.disconnect();
-        }
-         */
 
 
 
