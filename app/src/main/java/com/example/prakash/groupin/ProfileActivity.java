@@ -20,14 +20,14 @@ public class ProfileActivity extends AppCompatActivity {
                 switch (item.getItemId())
                 {
                     case R.id.nav_notification:
-                        startActivity(new Intent(ProfileActivity.this,Notify.class));
+                        startActivity(new Intent(ProfileActivity.this,Category.class));
                         break;
                     case R.id.nav_search:
                         startActivity(new Intent(ProfileActivity.this,SearchActivity.class));
 
                         break;
                     case R.id.nav_person:
-                        startActivity(new Intent(ProfileActivity.this,ProfileActivity.class));
+                        //startActivity(new Intent(ProfileActivity.this,ProfileActivity.class));
                         break;
 
                 }
