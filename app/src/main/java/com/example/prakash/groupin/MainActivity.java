@@ -1,7 +1,9 @@
 package com.example.prakash.groupin;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.StrictMode;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -48,17 +50,19 @@ public class MainActivity extends AppCompatActivity {
     private void sendPOST() throws IOException {
 
 
-        String requestURL = "http://groupin.unaux.com/UserCheck.php";
-        try {
+        String requestURL = "http://groupin.orgfree.com/Authenticate.php";
+        /*try {
             HttpUtility.sendGetRequest(requestURL);
             String[] response = HttpUtility.readMultipleLinesRespone();
             for (String line : response) {
                 Log.i("Line->",line);
             }
+
+
         } catch (IOException ex) {
             ex.printStackTrace();
-        }
-        HttpUtility.disconnect();
+        }*/
+        //HttpUtility.disconnect();
 
 
         Log.i("Line->","=====================================");
@@ -66,19 +70,46 @@ public class MainActivity extends AppCompatActivity {
             String usr=username.getText().toString();
         // test sending POST request
         Map<String, String> params = new HashMap<String, String>();
-        requestURL = "http://groupin.orgfree.com/UserCheck.php";
-        params.put("email", "prakashps26@gmail.com");
+        requestURL = "http://groupin.orgfree.com/Authenticate.php";
+        //params.put("email", "prakashps26@gmail.com");
         params.put("password", pass);
         params.put("name",usr);
 
         try {
             HttpUtility.sendPostRequest(requestURL, params);
             String[] response = HttpUtility.readMultipleLinesRespone();
+            int i=0;
             for (String line : response) {
                 System.out.println(line);
             }
-            //Call Home Fragment
-            callActivity();
+            if(response.length>=1){
+                System.out.println(response[0]);
+                if (response[0].contains("#User ID not present in database#") || response[0].contains("#Incorrect Password#") ) {
+                    Log.i("Error:",response[0]);
+                    AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+
+                    dlgAlert.setMessage("wrong password or username");
+                    dlgAlert.setTitle("Error Message...");
+                    dlgAlert.setPositiveButton("OK", null);
+                    dlgAlert.setCancelable(true);
+                    dlgAlert.create().show();
+
+                    dlgAlert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+                }
+                else
+                {   //When login Successfull
+                    callActivity();
+                }
+
+            }
+            else
+                Log.i("Error","No Response");
+
 
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -87,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         HttpUtility.disconnect();
     }
         private void callActivity(){
-            Intent intent=new Intent(this,Notify.class);
+            Intent intent=new Intent(this,Category.class);
             startActivity(intent);
         }
 

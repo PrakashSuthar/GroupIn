@@ -19,15 +19,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Notify"
-            android:label="Notices"/>
-        <activity android:name=".ProfileActivity"
-            android:label="Profile"
-            />
-        <activity android:name=".SearchActivity"
-            android:label="Search Notices">
-
-        </activity>
+        <activity
+            android:name=".Notify"
+            android:label="Notices" />
+        <activity
+            android:name=".ProfileActivity"
+            android:label="Profile" />
+        <activity
+            android:name=".SearchActivity"
+            android:label="Search Notices"></activity>
+        <activity android:name=".Category"></activity>
     </application>
 
 </manifest>

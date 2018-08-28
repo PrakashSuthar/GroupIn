@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Category">
+        <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:context=".MainActivity"
+            android:background="@drawable/background">
+
+            <ImageButton
+                android:id="@+id/first_canteen"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+            <ImageButton
+                android:id="@+id/second_FE"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@+id/first_canteen"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+            <ImageButton
+                android:id="@+id/third_IT"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@+id/first_canteen"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+            <ImageButton
+                android:id="@+id/fourth_EnTC"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/second_FE"
+                android:layout_toRightOf="@id/third_IT"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageButton
+                android:id="@+id/fifth_Sports"
+                android:layout_width="114dp"
+                android:layout_height="106dp"
+                android:layout_toRightOf="@id/second_FE"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageButton
+                android:id="@+id/sixth_Library"
+                android:layout_width="114dp"
+                android:layout_height="106dp"
+                android:layout_toRightOf="@id/fifth_Sports"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageButton
+                android:id="@+id/seventh_StudCount"
+                android:layout_width="106dp"
+                android:layout_height="106dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/third_IT"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageButton
+                android:id="@+id/eighth_comp"
+                android:layout_width="235dp"
+                android:layout_height="106dp"
+                android:layout_below="@id/fifth_Sports"
+                android:layout_toRightOf="@id/seventh_StudCount"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageButton
+                android:id="@+id/ninth_Pictoreal"
+                android:layout_width="106dp"
+                android:layout_height="106dp"
+                android:layout_alignParentStart="true"
+                android:layout_below="@+id/seventh_StudCount"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+            <ImageButton
+                android:id="@+id/tenth_ACM"
+                android:layout_width="114dp"
+                android:layout_height="106dp"
+                android:layout_toRightOf="@id/ninth_Pictoreal"
+                android:layout_below="@+id/seventh_StudCount"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+            <ImageButton
+                android:id="@+id/eleventh_IEEE"
+                android:layout_width="114dp"
+                android:layout_height="106dp"
+                android:layout_toRightOf="@id/tenth_ACM"
+                android:layout_below="@+id/seventh_StudCount"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageButton
+                android:id="@+id/twelve_ArtCircle"
+                android:layout_width="106dp"
+                android:layout_height="106dp"
+                android:layout_below="@id/ninth_Pictoreal"
+
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+            <ImageButton
+                android:id="@+id/thirteen_EDC"
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/twelve_ArtCircle"
+                android:layout_below="@id/tenth_ACM"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+            <ImageButton
+                android:id="@+id/fourteen_INC"
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@+id/thirteen_EDC"
+                android:layout_below="@id/tenth_ACM"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+            <ImageButton
+                android:id="@+id/fifteen_IET"
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:layout_toRightOf="@id/twelve_ArtCircle"
+                android:layout_below="@+id/thirteen_EDC"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+            <ImageButton
+                android:id="@+id/sixteen_CSI"
+                android:layout_width="54dp"
+                android:layout_height="50dp"
+                android:layout_below="@id/fourteen_INC"
+                android:layout_toRightOf="@id/fifteen_IET"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+
+            <ImageButton
+                android:id="@+id/seventeen_TnPC"
+                android:layout_width="114dp"
+                android:layout_height="106dp"
+                android:layout_toRightOf="@id/fourteen_INC"
+                android:layout_below="@+id/eleventh_IEEE"
+                android:layout_marginStart="6dp"
+                android:layout_marginTop="6dp"
+                android:background="#80000000"
+                app:srcCompat="@drawable/lock"
+                tools:ignore="VectorDrawableCompat" />
+
+
+
+
+        </RelativeLayout>
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/navigationView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@color/transparent"
+        app:itemBackground="@color/transparent"
+        app:itemIconTint="@color/colorAccent"
+        app:itemTextColor="@color/colorAccent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_navigation" />
+
+</android.support.constraint.ConstraintLayout>
