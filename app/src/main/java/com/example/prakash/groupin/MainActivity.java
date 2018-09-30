@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText username, password;
     Button login_btn;
-
+    String pass,usr,userType="teacher";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +39,26 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(final View v) {
 
             try {
+                if(!username.getText().toString().matches("") && !password.getText().toString().matches(""))
                 sendPOST();
+                else{
+                    Log.i("No Input","Empty Field not allowed");
+                    AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(MainActivity.this);
+
+                    dlgAlert.setMessage("PLEASE ENTER USERNAME AND PASSWORD");
+                    dlgAlert.setTitle("Error Message...");
+                    dlgAlert.setPositiveButton("OK", null);
+                    dlgAlert.setCancelable(true);
+                    dlgAlert.create().show();
+
+                    dlgAlert.setPositiveButton("Ok",
+                            new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+
+                                }
+                            });
+
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -66,8 +85,8 @@ public class MainActivity extends AppCompatActivity {
 
 
         Log.i("Line->","=====================================");
-            String pass=password.getText().toString();
-            String usr=username.getText().toString();
+            pass=password.getText().toString();
+            usr=username.getText().toString();
         // test sending POST request
         Map<String, String> params = new HashMap<String, String>();
         requestURL = "http://groupin.orgfree.com/Authenticate.php";
@@ -84,7 +103,7 @@ public class MainActivity extends AppCompatActivity {
             }
             if(response.length>=1){
                 System.out.println(response[0]);
-                if (response[0].contains("#User ID not present in database#") || response[0].contains("#Incorrect Password#") ) {
+                if (response[0].contains("#User ID not present in database#") || response[0].contains("#Incorrect Password#")  ) {
                     Log.i("Error:",response[0]);
                     AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
 
@@ -107,8 +126,24 @@ public class MainActivity extends AppCompatActivity {
                 }
 
             }
-            else
+            else{
                 Log.i("Error","No Response");
+                AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+
+                dlgAlert.setMessage("NO INTERNET CONNECTION");
+                dlgAlert.setTitle("Error Message...");
+                dlgAlert.setPositiveButton("OK", null);
+                dlgAlert.setCancelable(true);
+                dlgAlert.create().show();
+
+                dlgAlert.setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+
+                            }
+                        });
+            }
+
 
 
         } catch (IOException ex) {
@@ -119,6 +154,8 @@ public class MainActivity extends AppCompatActivity {
     }
         private void callActivity(){
             Intent intent=new Intent(this,Category.class);
+            intent.putExtra("username",usr);
+            intent.putExtra("usertype",userType);
             startActivity(intent);
         }
 
@@ -129,154 +166,3 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-class HttpUtility {
-
-    /**
-     * Represents an HTTP connection
-     */
-    private static HttpURLConnection httpConn;
-
-    /**
-     * Makes an HTTP request using GET method to the specified URL.
-     *
-     * @param requestURL
-     *            the URL of the remote server
-     * @return An HttpURLConnection object
-     * @throws IOException
-     *             thrown if any I/O error occurred
-     */
-    public static HttpURLConnection sendGetRequest(String requestURL)
-            throws IOException {
-        URL url = new URL(requestURL);
-        httpConn = (HttpURLConnection) url.openConnection();
-        httpConn.setUseCaches(false);
-        httpConn.setRequestMethod("GET");
-        httpConn.setDoInput(true); // true if we want to read server's response
-        httpConn.setDoOutput(false); // false indicates this is a GET request
-
-        return httpConn;
-    }
-
-    /**
-     * Makes an HTTP request using POST method to the specified URL.
-     *
-     * @param requestURL
-     *            the URL of the remote server
-     * @param params
-     *            A map containing POST data in form of key-value pairs
-     * @return An HttpURLConnection object
-     * @throws IOException
-     *             thrown if any I/O error occurred
-     */
-    public static HttpURLConnection sendPostRequest(String requestURL,
-                                                    Map<String, String> params) throws IOException {
-        URL url = new URL(requestURL);
-        httpConn = (HttpURLConnection) url.openConnection();
-        httpConn.setUseCaches(false);
-
-
-//        httpConn.setRequestProperty("Cookie",cookies);
-        httpConn.setRequestProperty("User-Agent", "Mozilla");
-        httpConn.setRequestProperty("Accept-Language", "en-US,en;q=0.5");
-        httpConn.addRequestProperty("Referer", "google.com");
-        httpConn.setDoInput(true); // true indicates the server returns response
-        httpConn.setRequestMethod("POST");
-        httpConn.setDoOutput(true);
-        //String cookies = httpConn.getHeaderField("Set-Cookie");
-        //  System.out.println("Cookies:"+cookies);
-        StringBuffer requestParams = new StringBuffer();
-        if (params != null && params.size() > 0) {
-
-            httpConn.setDoOutput(true); // true indicates POST request
-
-            // creates the params string, encode them using URLEncoder
-            Iterator<String> paramIterator = params.keySet().iterator();
-            boolean a=true;
-            while (paramIterator.hasNext()) {
-                if(a)
-                {
-                    a=false;
-
-                }
-                else
-                    requestParams.append("&");
-                String key = paramIterator.next();
-                String value = params.get(key);
-                requestParams.append(URLEncoder.encode(key, "UTF-8"));
-                requestParams.append("=").append(
-                        URLEncoder.encode(value, "UTF-8"));
-
-            }
-
-            // sends POST data
-            OutputStreamWriter writer = new OutputStreamWriter(
-                    httpConn.getOutputStream());
-            writer.write(requestParams.toString());
-            writer.flush();
-        }
-
-        return httpConn;
-    }
-
-    /**
-     * Returns only one line from the server's response. This method should be
-     * used if the server returns only a single line of String.
-     *
-     * @return a String of the server's response
-     * @throws IOException
-     *             thrown if any I/O error occurred
-     */
-    public static String readSingleLineRespone() throws IOException {
-        InputStream inputStream = null;
-        if (httpConn != null) {
-            inputStream = httpConn.getInputStream();
-        } else {
-            throw new IOException("Connection is not established.");
-        }
-        BufferedReader reader = new BufferedReader(new InputStreamReader(
-                inputStream));
-
-        String response = reader.readLine();
-        reader.close();
-
-        return response;
-    }
-
-    /**
-     * Returns an array of lines from the server's response. This method should
-     * be used if the server returns multiple lines of String.
-     *
-     * @return an array of Strings of the server's response
-     * @throws IOException
-     *             thrown if any I/O error occurred
-     */
-    public static String[] readMultipleLinesRespone() throws IOException {
-        InputStream inputStream = null;
-        if (httpConn != null) {
-            inputStream = httpConn.getInputStream();
-        } else {
-            throw new IOException("Connection is not established.");
-        }
-
-        BufferedReader reader = new BufferedReader(new InputStreamReader(
-                inputStream));
-        List<String> response = new ArrayList<String>();
-
-        String line = "";
-        while ((line = reader.readLine()) != null) {
-            response.add(line);
-        }
-        reader.close();
-
-        return (String[]) response.toArray(new String[0]);
-    }
-
-    /**
-     * Closes the connection if opened
-     */
-    public static void disconnect() {
-        if (httpConn != null) {
-            httpConn.disconnect();
-        }
-    }
-}

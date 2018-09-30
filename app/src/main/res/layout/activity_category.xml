@@ -9,14 +9,15 @@
     tools:layout_editor_absoluteY="81dp">
 
 
-
     <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@drawable/background"
         tools:context=".MainActivity"
-        android:background="@drawable/background">
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="16dp">
 
         <ImageButton
             android:id="@+id/first_canteen"
@@ -27,19 +28,23 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
             android:background="#80000000"
+            android:onClick="onClick"
             app:srcCompat="@drawable/ic_restaurant_black_24dp"
-        tools:ignore="VectorDrawableCompat" />
+            tools:ignore="VectorDrawableCompat" />
+
         <ImageButton
             android:id="@+id/second_FE"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:layout_toRightOf="@+id/first_canteen"
             android:layout_alignParentTop="true"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
+            android:layout_toRightOf="@+id/first_canteen"
             android:background="#80000000"
+            android:onClick="onClick"
             app:srcCompat="@drawable/ic_assignment_black_24dp"
             tools:ignore="VectorDrawableCompat" />
+
         <ImageButton
             android:id="@+id/third_IT"
             android:layout_width="50dp"
@@ -48,31 +53,35 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
             android:background="#80000000"
+            android:onClick="onClick"
             app:srcCompat="@drawable/ic_devices_black_24dp"
-            tools:ignore="VectorDrawableCompat"/>
+            tools:ignore="VectorDrawableCompat" />
+
         <ImageButton
             android:id="@+id/fourth_EnTC"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_below="@id/second_FE"
-            android:layout_toRightOf="@id/third_IT"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/third_IT"
             android:background="#80000000"
+            android:onClick="onClick"
             app:srcCompat="@drawable/ic_settings_input_antenna_black_24dp"
-            tools:ignore="VectorDrawableCompat"/>
+            tools:ignore="VectorDrawableCompat" />
 
         <ImageButton
             android:id="@+id/fifth_Sports"
             android:layout_width="114dp"
             android:layout_height="106dp"
-            android:layout_toRightOf="@id/second_FE"
             android:layout_alignParentTop="true"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/second_FE"
             android:background="#80000000"
+            android:onClick="onClick"
             app:srcCompat="@drawable/ic_fitness_center_black_48dp"
-            tools:ignore="VectorDrawableCompat"/>
+            tools:ignore="VectorDrawableCompat" />
 
         <TextView
             android:id="@+id/sports"
@@ -90,13 +99,14 @@
             android:id="@+id/sixth_Library"
             android:layout_width="114dp"
             android:layout_height="106dp"
-            android:layout_toRightOf="@id/fifth_Sports"
             android:layout_alignParentTop="true"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/fifth_Sports"
             android:background="#80000000"
+            android:onClick="onClick"
             app:srcCompat="@drawable/ic_library_books_black_48dp"
-            tools:ignore="VectorDrawableCompat"/>
+            tools:ignore="VectorDrawableCompat" />
 
         <TextView
             android:id="@+id/library"
@@ -106,8 +116,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="90dp"
             android:layout_toRightOf="@id/fifth_Sports"
-            android:text="Library"
             android:fontFamily="@font/sagoe_ui"
+            android:text="Library"
             android:textColor="#fff" />
 
         <ImageButton
@@ -119,8 +129,9 @@
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
             android:background="#80000000"
+            android:onClick="onClick"
             app:srcCompat="@drawable/ic_directions_run_black_48dp"
-            tools:ignore="VectorDrawableCompat"/>
+            tools:ignore="VectorDrawableCompat" />
 
         <TextView
             android:id="@+id/studcount"
@@ -130,8 +141,8 @@
             android:layout_below="@+id/third_IT"
             android:layout_marginStart="10dp"
             android:layout_marginTop="90dp"
-            android:text="Stud Counter"
             android:fontFamily="@font/sagoe_ui"
+            android:text="Stud Counter"
             android:textColor="#fff" />
 
 
@@ -140,12 +151,13 @@
             android:layout_width="235dp"
             android:layout_height="106dp"
             android:layout_below="@id/fifth_Sports"
-            android:layout_toRightOf="@id/seventh_StudCount"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
+            android:layout_toRightOf="@id/seventh_StudCount"
             android:background="#80000000"
+            android:onClick="onClick"
             app:srcCompat="@drawable/ic_laptop_mac_black_48dp"
-            tools:ignore="VectorDrawableCompat"/>
+            tools:ignore="VectorDrawableCompat" />
 
         <TextView
             android:id="@+id/comp"
@@ -155,8 +167,8 @@
             android:layout_marginStart="10dp"
             android:layout_marginTop="90dp"
             android:layout_toRightOf="@id/seventh_StudCount"
-            android:text="Computer Dept"
             android:fontFamily="@font/sagoe_ui"
+            android:text="Computer Dept"
             android:textColor="#fff" />
 
 
@@ -168,7 +180,8 @@
             android:layout_below="@+id/seventh_StudCount"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
-            android:background="#80000000" />
+            android:background="#80000000"
+            android:onClick="onClick" />
 
         <ImageView
             android:id="@+id/Pictoreal"
@@ -178,45 +191,58 @@
             android:layout_below="@+id/seventh_StudCount"
             android:layout_marginStart="7dp"
             android:layout_marginTop="15dp"
+            android:onClick="onClick"
             android:src="@drawable/pictoreal" />
+        <TextView
+            android:id="@+id/Pictoreal_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/seventh_StudCount"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="90dp"
+            android:fontFamily="@font/sagoe_ui"
+            android:text="Pictoreal"
+            android:textColor="#fff" />
 
         <ImageButton
             android:id="@+id/tenth_ACM"
             android:layout_width="114dp"
             android:layout_height="106dp"
-            android:layout_toRightOf="@id/ninth_Pictoreal"
             android:layout_below="@+id/seventh_StudCount"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
-            android:background="#80000000" />
+            android:layout_toRightOf="@id/ninth_Pictoreal"
+            android:background="#80000000"
+            android:onClick="onClick" />
+
         <ImageView
             android:id="@+id/ACM"
             android:layout_width="100dp"
             android:layout_height="80dp"
-            android:layout_toRightOf="@id/ninth_Pictoreal"
             android:layout_below="@+id/seventh_StudCount"
             android:layout_marginStart="13dp"
             android:layout_marginTop="15dp"
+            android:layout_toRightOf="@id/ninth_Pictoreal"
+            android:onClick="onClick"
             android:src="@drawable/acm" />
 
         <ImageButton
             android:id="@+id/eleventh_IEEE"
             android:layout_width="114dp"
             android:layout_height="106dp"
-            android:layout_toRightOf="@id/tenth_ACM"
             android:layout_below="@+id/seventh_StudCount"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
-            android:background="#80000000"/>
+            android:layout_toRightOf="@id/tenth_ACM"
+            android:background="#80000000" />
 
         <ImageView
             android:id="@+id/IEEE"
             android:layout_width="108dp"
-            android:layout_height="110dp"
-            android:layout_toRightOf="@id/tenth_ACM"
-            android:layout_below="@+id/seventh_StudCount"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="6dp"
+            android:layout_height="106dp"
+            android:layout_alignStart="@+id/sixth_Library"
+            android:layout_alignTop="@+id/ninth_Pictoreal"
+            android:onClick="onClick"
             android:src="@drawable/ieee" />
 
 
@@ -228,7 +254,7 @@
 
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
-            android:background="#80000000"/>
+            android:background="#80000000" />
 
         <ImageView
             android:id="@+id/imageView1"
@@ -237,6 +263,7 @@
             android:layout_below="@id/ninth_Pictoreal"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
+            android:onClick="onClick"
             android:src="@drawable/art_circle" />
 
 
@@ -249,8 +276,9 @@
             android:layout_marginTop="6dp"
             android:layout_toRightOf="@id/twelve_ArtCircle"
             android:background="#80000000"
-            android:text="EDC"
             android:fontFamily="@font/sagoe_ui"
+            android:onClick="onClick"
+            android:text="EDC"
             android:textColor="#fff" />
 
         <Button
@@ -260,22 +288,24 @@
             android:layout_below="@id/tenth_ACM"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
-            android:fontFamily="@font/sagoe_ui"
             android:layout_toRightOf="@+id/thirteen_EDC"
             android:background="#80000000"
+            android:fontFamily="@font/sagoe_ui"
+            android:onClick="onClick"
             android:text="INC"
             android:textColor="#fff" />
 
         <Button
             android:id="@+id/fifteen_IET"
             android:layout_width="54dp"
-            android:fontFamily="@font/sagoe_ui"
             android:layout_height="50dp"
             android:layout_below="@+id/thirteen_EDC"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
             android:layout_toRightOf="@id/twelve_ArtCircle"
             android:background="#80000000"
+            android:fontFamily="@font/sagoe_ui"
+            android:onClick="onClick"
             android:text="IET"
             android:textColor="#fff" />
 
@@ -283,57 +313,36 @@
             android:id="@+id/sixteen_CSI"
             android:layout_width="54dp"
             android:layout_height="50dp"
-            android:fontFamily="@font/sagoe_ui"
             android:layout_below="@id/fourteen_INC"
             android:layout_marginStart="6dp"
             android:layout_marginTop="6dp"
             android:layout_toRightOf="@id/fifteen_IET"
             android:background="#80000000"
+            android:fontFamily="@font/sagoe_ui"
+            android:onClick="onClick"
             android:text="CSI"
             android:textColor="#fff" />
 
         <ImageButton
-            android:id="@+id/seventeen_TnPC"
-            android:layout_width="114dp"
-            android:layout_height="106dp"
-            android:layout_below="@+id/eleventh_IEEE"
-            android:layout_marginStart="6dp"
-            android:layout_marginTop="6dp"
-            android:layout_toRightOf="@id/fourteen_INC"
-            android:background="#80000000"
-            android:fontFamily="sans-serif"
-            android:gravity="bottom"
-            android:text=" TnPC"
-            android:textAllCaps="false"
-            android:textColor="#fff"
-
-
-            />
-
-        <ImageView
             android:id="@+id/TnPC"
-            android:layout_width="86dp"
-            android:layout_height="53dp"
+            android:layout_width="111dp"
+            android:layout_height="104dp"
 
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="99dp"
-            android:layout_marginEnd="20dp"
-            android:src="@drawable/tnpc" />
+            android:layout_alignTop="@+id/twelve_ArtCircle"
+            android:layout_marginLeft="240dp"
+            android:background="#80000000"
+            android:foreground="@drawable/tnpc"
+            android:onClick="onClick" />
 
         <TextView
             android:id="@+id/TNPC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/eleventh_IEEE"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="90dp"
+            android:layout_alignBottom="@+id/TnPC"
+            android:layout_alignStart="@+id/library"
             android:fontFamily="@font/sagoe_ui"
-            android:layout_toRightOf="@id/fourteen_INC"
             android:text="  TnPC"
             android:textColor="#fff" />
-
-
 
 
     </RelativeLayout>
@@ -342,14 +351,14 @@
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigationView"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground"
+        android:layout_height="58dp"
+        android:background="@color/transparent"
         app:itemBackground="@color/transparent"
-        app:itemIconTint="@color/colorAccent"
+        app:itemIconTint="@color/milkwhite"
         app:itemTextColor="@color/milkwhite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_navigation" />
+        />
 
 </android.support.constraint.ConstraintLayout>

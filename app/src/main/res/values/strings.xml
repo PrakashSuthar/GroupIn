@@ -21,4 +21,30 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string-array name="categories">
+        i.putExtra(ex,"canteen");
+        startActivity(i);
+        //do something
+        break;
+        case R.id.second_FE:
+        //do something
+        i.putExtra(ex,"fe");
+
+
+        <item>tnpc</item>
+        <item>csi</item>
+        <item>iet</item>
+        <item>inc</item>
+        <item>edc</item>
+        <item>arts</item>
+        <item>ieee</item>
+        <item>acm</item>
+        <item>pictoreal</item>
+        <item>stucounter</item>
+        <item>library</item>
+        <item>sports</item>
+        <item>it</item>
+        <item>fe</item>
+        <item>canteen</item>
+    </string-array>
 </resources>

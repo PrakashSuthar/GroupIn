@@ -11,98 +11,88 @@ import android.support.design.internal.BottomNavigationPresenter;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.ImageView;
 import android.graphics.Bitmap;
+
+import com.example.prakash.groupin.m_MySQL.Downloader;
+
 import java.net.*;
 import java.io.*;
+import java.util.HashMap;
+import java.util.Map;
+
 public class Notify extends AppCompatActivity {
     @SuppressLint("ResourceType")
+    String usr,userType;
+    public static String urlAddress="http://groupin.orgfree.com/Notices.php";
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notify);
-        final ConstraintLayout CL=(ConstraintLayout)findViewById(R.id.container);
-        //Initialize  a new ImageView widget
-        ImageView Iv1=new ImageView(getApplicationContext());
-        Iv1.setId(1);
-        ConstraintSet set = new ConstraintSet();
-        CL.addView(Iv1,0);
-       // set.clone(CL);
-        Iv1.requestLayout();
-        //Iv1.getLayoutParams().height=400;
-        //Iv1.getLayoutParams().width=400;
-       //set.connect(Iv1.getId(), ConstraintSet.TOP, CL.getId(), ConstraintSet.TOP, 60);
-        //set.applyTo(CL);
-        //Set an image for ImageView
-        try {
-            URL newurl = new URL("https://talksport.com/wp-content/uploads/sites/5/2018/08/GettyImages-1020217934.jpg?strip=all&w=960&quality=100");
-            Bitmap mIcon_val = BitmapFactory.decodeStream(newurl.openConnection() .getInputStream());
-            ConstraintLayout.LayoutParams ImP=(ConstraintLayout.LayoutParams)Iv1.getLayoutParams();
-            ImP.height=mIcon_val.getHeight();
-            ImP.width=mIcon_val.getWidth();
-            Iv1.setImageBitmap(mIcon_val);
-
-            Log.i("msg","Displayed image1");
-            ImageView Iv=new ImageView(getApplicationContext());
-            Iv.setId(2);
-            CL.addView(Iv,1);
-            newurl = new URL("https://talksport.com/wp-content/uploads/sites/5/2018/08/GettyImages-1020217934.jpg?strip=all&w=960&quality=100");
-
-            mIcon_val = BitmapFactory.decodeStream(newurl.openConnection() .getInputStream());
-            ConstraintLayout.LayoutParams ImP2=(ConstraintLayout.LayoutParams)Iv.getLayoutParams();
-            ImP2.height=mIcon_val.getHeight();
-            ImP2.width=mIcon_val.getWidth();
-            Log.i("width,height",ImP2.width+"..."+ ImP2.height);
-            //ImP2.startToEnd=1;
-            ImP2.startToStart=R.id.parent;
-            ImP2.topToBottom=1;
-            ImP2.topMargin=50;
-            //Set image Parameters ie resize accordingly...
-            //set.connect(Iv.getId(), ConstraintSet.TOP, Iv1.getId(), ConstraintSet.BOTTOM, 60);
-            //THE connect() function accepts parametrs(ID of element to be displayed,which propertyof element to be displayed ,element with respect to which we are assigning property,which property of element to affect)
-          //  set.applyTo(CL);
-            Iv.setImageBitmap(mIcon_val);
-
-            Log.i("msg","Displayed image 2");
-        }
-        catch (Exception E){
-            Log.i("msg","error");
-        }
+        usr=getIntent().getExtras().getString("username");
+        userType=getIntent().getExtras().getString("usertype");
+        String cat=getIntent().getExtras().getString("category");
+        Log.i("Category",cat);
+        Map<String, String> params = new HashMap<String, String>();
+        params.put("username",usr);
+        params.put("category",cat);
+        RecyclerView rv=(RecyclerView)findViewById(R.id.rv);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setItemAnimator(new DefaultItemAnimator());
+        Downloader d=new Downloader(Notify.this,urlAddress,rv,params);
+        d.execute();
+        //rv.setAdapter();
 
 
-
-
-
-
-
-
-
-
-
-
-
-
+            //Set params for posting to php page
 
         //Get object corresponding to BottomNavigationBarNamed navigationView
         BottomNavigationView bottombar=(BottomNavigationView)findViewById(R.id.navigationView);
+        if(userType.compareTo("teacher")==0)
+        bottombar.inflateMenu(R.menu.bottom_navigation_teacher);
+        else
+            bottombar.inflateMenu(R.menu.bottom_navigation);
         bottombar.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                Intent i;
                 switch (item.getItemId())
                 {
                     case R.id.nav_notification:
-                        //startActivity(new Intent(Notify.this,Notify.class));
+                        i=new Intent(Notify.this,Category.class);
+                        i.putExtra("username",usr);
+                        i.putExtra("usertype",userType);
+                        startActivity(i);
                         break;
                     case R.id.nav_search:
-                        startActivity(new Intent(Notify.this,SearchActivity.class));
+                        i=new Intent(Notify.this,SearchActivity.class);
+                        i.putExtra("username",usr);
+                        i.putExtra("usertype",userType);
+                        startActivity(i);
 
                         break;
                     case R.id.nav_person:
-                        startActivity(new Intent(Notify.this,ProfileActivity.class));
+                        i=new Intent(Notify.this,ProfileActivity.class);
+                        i.putExtra("username",usr);
+                        i.putExtra("usertype",userType);
+                        startActivity(i);
                         break;
-
+                    case R.id.nav_upload:
+                        if(userType.compareTo("teacher")==0) {
+                            i = new Intent(Notify.this, UploadActivity.class);
+                            i.putExtra("username", usr);
+                            i.putExtra("usertype", userType);
+                            startActivity(i);
+                        }
+                        break;
                 }
                 return false;
             }

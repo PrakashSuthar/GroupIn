@@ -7,21 +7,16 @@
     android:id="@+id/Constraint"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingBottom="16dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp"
+    android:paddingTop="16dp"
+    android:background="@drawable/nb_texture"
+    app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingView"
+    tools:showIn="@layout/activity_notify"
     tools:context=".Notify">
 
-    <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".Notify">
-
-        <android.support.constraint.ConstraintLayout
-            android:id="@+id/container"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior" />
-    </ScrollView>
+    <include layout="@layout/content_main" />
 
     <android.support.design.widget.BottomNavigationView
         android:id="@+id/navigationView"
@@ -34,6 +29,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_navigation" />
+        />
 
 </android.support.constraint.ConstraintLayout>
