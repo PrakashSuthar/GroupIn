@@ -3,7 +3,7 @@ package com.example.prakash.groupin.m_DataObject;
 public class Spacecraft {
 
     int id;
-    String name,imageUrl;
+    public String title,imageUrl, date_uploaded, description, by, cat;
 
     public int getId() {
         return id;
@@ -14,11 +14,11 @@ public class Spacecraft {
     }
 
     public String getName() {
-        return name;
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setName(String title) {
+        this.title = title;
     }
 
     public String getImageUrl() {

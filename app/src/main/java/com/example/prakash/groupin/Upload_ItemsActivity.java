@@ -59,9 +59,9 @@ public class Upload_ItemsActivity extends AppCompatActivity {
         public View getView(int i, View view, ViewGroup viewGroup) {
             if(view==null)
             {
-                view= LayoutInflater.from(c).inflate(R.layout.upload_row_model,viewGroup,false);
+              //  view= LayoutInflater.from(c).inflate(R.layout.upload_row_model,viewGroup,false);
             }
-
+            /*
             TextView txtName = view.findViewById(R.id.nameTextView);
             TextView txtDescription = view.findViewById(R.id.descriptionTextView);
             ImageView teacherImageView = view.findViewById(R.id.teacherImageView);
@@ -86,7 +86,7 @@ public class Upload_ItemsActivity extends AppCompatActivity {
                     Toast.makeText(c, teacher.getName(), Toast.LENGTH_SHORT).show();
                 }
             });
-
+            */
             return view;
         }
     }

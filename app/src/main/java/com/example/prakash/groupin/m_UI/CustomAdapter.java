@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.example.prakash.groupin.R;
 import com.example.prakash.groupin.m_DataObject.Spacecraft;
@@ -14,7 +15,7 @@ import java.util.ArrayList;
 
 public class CustomAdapter extends RecyclerView.Adapter<MyHolder>{
     Context c;
-    ArrayList<Spacecraft> spacecrafts;
+    public ArrayList<Spacecraft> spacecrafts;
 
     public CustomAdapter(Context c, ArrayList<Spacecraft> spacecrafts) {
         this.c = c;
@@ -32,6 +33,7 @@ public class CustomAdapter extends RecyclerView.Adapter<MyHolder>{
         Spacecraft spacecraft=spacecrafts.get(position);
         holder.nameText.setText(spacecraft.getName());
     //IMAGE
+
         PicassoClient.downloadImage(c,spacecraft.getImageUrl(),holder.img);
     }
 
@@ -40,4 +42,5 @@ public class CustomAdapter extends RecyclerView.Adapter<MyHolder>{
 
         return spacecrafts.size();
     }
+
 }

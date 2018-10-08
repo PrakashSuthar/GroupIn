@@ -33,6 +33,8 @@
             android:name=".Category"
             android:label="Notice Category" />
         <activity android:name=".UploadActivity"></activity>
+        <activity android:name=".m_DetailActivity.DetailActivity"
+            android:label="Detail Activity"/>
     </application>
 
 </manifest>

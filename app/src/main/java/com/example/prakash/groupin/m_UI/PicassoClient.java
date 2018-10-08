@@ -4,7 +4,10 @@ import android.content.Context;
 import android.widget.ImageView;
 
 import com.example.prakash.groupin.R;
+import com.example.prakash.groupin.m_DataObject.Spacecraft;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 
 public class PicassoClient {
     public static void downloadImage(Context c, String imageUrl, ImageView img) {
@@ -12,5 +15,6 @@ public class PicassoClient {
             Picasso.with(c).load(imageUrl).placeholder(R.drawable.backg).into(img);
         else
             Picasso.with(c).load(R.drawable.backg).into(img);
+
     }
 }

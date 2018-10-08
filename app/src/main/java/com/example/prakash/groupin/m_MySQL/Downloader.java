@@ -6,12 +6,15 @@ import android.os.AsyncTask;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.example.prakash.groupin.m_DataObject.Spacecraft;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
+import java.util.ArrayList;
 import java.util.Map;
 
 public class Downloader extends AsyncTask<Void,Void,String> {
@@ -21,12 +24,15 @@ public class Downloader extends AsyncTask<Void,Void,String> {
     RecyclerView rv;
     Map<String,String> params;
     ProgressDialog pd;
-
-    public Downloader(Context c, String urlAddress, RecyclerView rv,Map<String, String> params) {
+    public ArrayList<Spacecraft> spacecrafts;
+    public static String JSONDATA;
+    //JSON
+    public Downloader(Context c, String urlAddress, RecyclerView rv,Map<String, String> params,ArrayList<Spacecraft> spacecrafts) {
         this.c = c;
         this.urlAddress = urlAddress;
         this.rv = rv;
         this.params=params;
+        this.spacecrafts=spacecrafts;
     }
 
     @Override
@@ -53,10 +59,15 @@ public class Downloader extends AsyncTask<Void,Void,String> {
         if(jsonData==null){
             Toast.makeText(c,"Unsuccessful,No Data Retrieved",Toast.LENGTH_SHORT).show();
         }
-        else{
+        else {
             //PARSER
-            DataParser parser=new DataParser(c,jsonData,rv);
+            DataParser parser = new DataParser(c, jsonData, rv, spacecrafts);
             parser.execute();
+
+            //System.out.println("Status.FINISHED:"+Status.FINISHED);
+            //while(parser.getStatus().compareTo(Status.FINISHED)!=0){};
+            //System.out.println("PARSER FINISHED");
+            //System.out.println(" SpaceCRAFTS IN DOWNLOADER:"+spacecrafts.size());
         }
     }
 
@@ -78,7 +89,10 @@ public class Downloader extends AsyncTask<Void,Void,String> {
             while ((line=br.readLine())!=null){
                 jsonData.append(line+"\n");
             }
-
+            JSONDATA= String.valueOf(jsonData);
+            System.out.println(" JSONDATAT IN DOWNLOADER:"+jsonData);
+            System.out.println(" JSONDATA IN DOWNLOADER:"+jsonData);
+            //System.out.println(" SpaceCRAFTS IN DOWNLOADER:"+spacecrafts.get(0).description);
             br.close();
             is.close();
 

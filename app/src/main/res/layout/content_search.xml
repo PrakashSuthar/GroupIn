@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -12,8 +11,8 @@
     android:paddingRight="16dp"
     android:paddingTop="16dp"
     app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingView"
-    tools:showIn="@layout/activity_notify"
-    tools:context=".Notify">
+    tools:showIn="@layout/activity_search"
+    tools:context=".SearchActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv"

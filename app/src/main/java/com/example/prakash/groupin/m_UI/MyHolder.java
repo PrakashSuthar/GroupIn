@@ -15,5 +15,6 @@ public class MyHolder  extends RecyclerView.ViewHolder{
         super(itemView);
         nameText=itemView.findViewById(R.id.nameTxt);
         img=(ImageView)itemView.findViewById(R.id.movieImage);
+
     }
 }

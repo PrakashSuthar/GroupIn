@@ -3,6 +3,7 @@ package com.example.prakash.groupin;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
@@ -18,13 +19,19 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.graphics.Bitmap;
+import android.widget.Space;
 
+import com.example.prakash.groupin.m_DataObject.Spacecraft;
 import com.example.prakash.groupin.m_MySQL.Downloader;
+import com.example.prakash.groupin.m_UI.CustomAdapter;
+import com.example.prakash.groupin.m_UI.PicassoClient;
 
 import java.net.*;
 import java.io.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,12 +54,12 @@ public class Notify extends AppCompatActivity {
         RecyclerView rv=(RecyclerView)findViewById(R.id.rv);
         rv.setLayoutManager(new LinearLayoutManager(this));
         rv.setItemAnimator(new DefaultItemAnimator());
-        Downloader d=new Downloader(Notify.this,urlAddress,rv,params);
+
+        ArrayList<Spacecraft> spacecrafts=new ArrayList<>();
+        spacecrafts.clear();
+        Downloader d=new Downloader(Notify.this,urlAddress,rv,params,spacecrafts);
+        //System.out.println("JSON RECIEVED=>"+Downloader.JSONDATA);
         d.execute();
-        //rv.setAdapter();
-
-
-            //Set params for posting to php page
 
         //Get object corresponding to BottomNavigationBarNamed navigationView
         BottomNavigationView bottombar=(BottomNavigationView)findViewById(R.id.navigationView);
