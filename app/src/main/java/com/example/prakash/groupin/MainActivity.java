@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     EditText username, password;
     Button login_btn;
-    String pass,usr,userType="teacher";
+    String pass,usr,userType;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,6 +122,8 @@ public class MainActivity extends AppCompatActivity {
                 }
                 else
                 {   //When login Successfull
+                    userType=""+response[0];
+                    System.out.println("userType: "+userType);
                     callActivity();
                 }
 
@@ -155,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
         private void callActivity(){
             Intent intent=new Intent(this,Category.class);
             intent.putExtra("username",usr);
-            intent.putExtra("usertype",userType);
+            intent.putExtra("usertype",userType.trim());
             startActivity(intent);
         }
 

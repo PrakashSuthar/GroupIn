@@ -11,7 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class Category extends AppCompatActivity {
-    String usr="",userType="teacher";
+    String usr="",userType;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,6 +20,7 @@ public class Category extends AppCompatActivity {
         userType=getIntent().getExtras().getString("usertype");
         //Get object corresponding to BottomNavigationBarNamed navigationView
         BottomNavigationView bottombar=(BottomNavigationView)findViewById(R.id.navigationView);
+      BottomNavigationViewHelper.removeShiftMode(bottombar);
         if(userType.compareTo("teacher")==0)
             bottombar.inflateMenu(R.menu.bottom_navigation_teacher);
         else
@@ -84,6 +85,11 @@ public class Category extends AppCompatActivity {
                     i.putExtra(ex,"it");
                     startActivity(i);
                     break;
+                case R.id.fourth_EnTC:
+                    //do something
+                    i.putExtra(ex,"entc");
+                    startActivity(i);
+                    break;
                 case R.id.fifth_Sports:
                     //do something
                     i.putExtra(ex,"sports");
@@ -97,6 +103,11 @@ public class Category extends AppCompatActivity {
                 case R.id.seventh_StudCount:
                     //do something
                     i.putExtra(ex,"stucounter");
+                    startActivity(i);
+                    break;
+                case R.id.eighth_comp:
+                    //do something
+                    i.putExtra(ex,"comp");
                     startActivity(i);
                     break;
                 case R.id.ninth_Pictoreal:
